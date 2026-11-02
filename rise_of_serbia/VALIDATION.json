@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "script_and_gui_files_parsed": 14,
+  "localization_keys": 153,
+  "checks": [
+    "balanced and tokenized scripts and GUI",
+    "metadata and UTF-8 BOM",
+    "internal script and localization references",
+    "unrelated Serbian events unchanged",
+    "overlapping disaster and event guards",
+    "both imperial endings reachable",
+    "unprepared successor can centralize",
+    "crisis conditions block premature victory",
+    "smaller empire can consolidate",
+    "monthly progress reaches 36 and resets on war",
+    "400 political combinations stay within strain bounds"
+  ],
+  "limitations": [
+    "EU5 executable unavailable; no engine parsing or in-game UI render performed",
+    "province groups verified against scripts; exact 1348 location borders need map/setup files",
+    "installation and all-DLC runtime compatibility need user playtest"
+  ]
+}

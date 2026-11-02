@@ -1,0 +1,20 @@
+ros_macedonia_delegation = {
+    game_data = { category = country }
+    tax_income_efficiency = -0.025
+}
+ros_albania_delegation = {
+    game_data = { category = country }
+    tax_income_efficiency = -0.025
+}
+ros_epirus_delegation = {
+    game_data = { category = country }
+    tax_income_efficiency = -0.025
+}
+ros_thessaly_delegation = {
+    game_data = { category = country }
+    tax_income_efficiency = -0.025
+}
+ros_compact_concessions = { game_data = { category = country } tax_income_efficiency = -0.05 }
+ros_enduring_crown = { game_data = { category = country } monthly_legitimacy = 0.1 global_monthly_control = 0.001 }
+ros_enduring_compact = { game_data = { category = country } monthly_legitimacy = 0.1 }
+ros_unfinished_inheritance = { game_data = { category = country } monthly_legitimacy = -0.1 }

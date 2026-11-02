@@ -1,0 +1,58 @@
+ros_inheritance = {
+    monthly_spawn_chance = monthly_spawn_chance_unique
+    content_trigger = { tag = SER }
+    can_start = { c:SER ?= { has_variable = ros_inheritance_pending NOT = { has_variable = ros_inheritance_started } } }
+    visible = { tag = SER }
+    outcome = {
+        name = ros_central_victory
+        desc = ros_central_victory_desc
+        trigger = { c:SER ?= { has_variable = ros_central_victory } }
+        immediate = { c:SER ?= { ros_clear_regional_modifiers = yes trigger_event_non_silently = ros.40 } }
+    }
+    outcome = {
+        name = ros_compact_victory
+        desc = ros_compact_victory_desc
+        trigger = { c:SER ?= { has_variable = ros_compact_victory } }
+        immediate = { c:SER ?= { trigger_event_non_silently = ros.41 } }
+    }
+    outcome = {
+        name = ros_unsettled_end
+        desc = ros_unsettled_end_desc
+        trigger = { c:SER ?= { var:ros_inheritance_months >= 240 } }
+        immediate = { c:SER ?= { trigger_event_non_silently = ros.42 } }
+    }
+    outcome = { name = ros_country_lost trigger = { NOT = { country_exists = c:SER } } }
+    on_start = {
+        set_variable = { name = ros_country value = c:SER }
+        c:SER = {
+            set_variable = ros_inheritance_started
+            remove_variable = ros_inheritance_pending
+            set_variable = { name = ros_inheritance_months value = 0 }
+            set_variable = { name = ros_stable_months value = 0 }
+            if = { limit = { has_variable = ros_prepared_heir NOT = { ruler ?= var:ros_prepared_heir } }
+                remove_variable = ros_successor_prepared
+            }
+            ros_refresh_realm = yes
+            trigger_event_non_silently = ros.2
+        }
+    }
+    on_monthly = {
+        c:SER ?= {
+            change_variable = { name = ros_inheritance_months add = 1 }
+            ros_refresh_realm = yes
+            if = {
+                limit = { var:ros_strain <= 40 at_war = no stability >= 20 legitimacy >= 60 ros_all_held_regions_settled = yes }
+                change_variable = { name = ros_stable_months add = 1 }
+            }
+            else = { set_variable = { name = ros_stable_months value = 0 } }
+        }
+    }
+
+    map_color = {
+        if = { limit = { owner ?= c:SER } value = define:NMapColors|MAP_COLOR_HIGH }
+        else_if = { limit = { OR = { ros_macedonia_location = yes ros_albania_location = yes ros_epirus_location = yes ros_thessaly_location = yes } } value = define:NMapColors|MAP_COLOR_MID }
+        else = { value = define:NMapColors|DEFAULT_COLOR }
+    }
+    legend_key = { desc = ros_map_held color = define:NMapColors|MAP_COLOR_HIGH }
+    legend_key = { desc = ros_map_objectives color = define:NMapColors|MAP_COLOR_MID }
+}

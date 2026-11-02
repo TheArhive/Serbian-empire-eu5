@@ -1,0 +1,16 @@
+{
+  "name": "The Rise of Serbia",
+  "id": "thearhive.rise_of_serbia",
+  "version": "0.1.0",
+  "game_id": "eu5",
+  "supported_game_version": "1.4.6",
+  "short_description": "Historical Serbian expansion and an imperial inheritance that can endure.",
+  "tags": [
+    "Gameplay",
+    "Historical"
+  ],
+  "relationships": [],
+  "game_custom_data": {
+    "multiplayer_synchronized": true
+  }
+}

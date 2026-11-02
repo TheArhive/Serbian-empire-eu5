@@ -1,0 +1,4 @@
+ros_actions_list = {
+    potential = { tag = SER OR = { can_see_situation = situation:ros_rise can_see_situation = situation:ros_inheritance } }
+    actions = { ros_claim_programme ros_proclaim_empire ros_promulgate_code ros_prepare_successor ros_settle_macedonia ros_revoke_macedonia ros_settle_albania ros_revoke_albania ros_settle_epirus ros_revoke_epirus ros_settle_thessaly ros_revoke_thessaly ros_negotiate_compact ros_confirm_crown ros_confirm_compact }
+}

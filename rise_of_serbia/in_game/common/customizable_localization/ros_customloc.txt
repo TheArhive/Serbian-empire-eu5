@@ -1,0 +1,54 @@
+ros_macedonia_status = {
+    type = country
+    text = { trigger = { ros_macedonia_controlled = no has_variable = ros_macedonia_settled } localization_key = ros_macedonia_lost }
+    text = { trigger = { ros_macedonia_controlled = yes has_variable = ros_macedonia_delegated } localization_key = ros_macedonia_delegated_status }
+    text = { trigger = { ros_macedonia_controlled = yes has_variable = ros_macedonia_settled } localization_key = ros_macedonia_royal_status }
+    text = { trigger = { ros_macedonia_controlled = yes } localization_key = ros_macedonia_unsettled_status }
+    text = { fallback = yes localization_key = ros_macedonia_status_fallback }
+}
+ros_albania_status = {
+    type = country
+    text = { trigger = { ros_albania_controlled = no has_variable = ros_albania_settled } localization_key = ros_albania_lost }
+    text = { trigger = { ros_albania_controlled = yes has_variable = ros_albania_delegated } localization_key = ros_albania_delegated_status }
+    text = { trigger = { ros_albania_controlled = yes has_variable = ros_albania_settled } localization_key = ros_albania_royal_status }
+    text = { trigger = { ros_albania_controlled = yes } localization_key = ros_albania_unsettled_status }
+    text = { fallback = yes localization_key = ros_albania_status_fallback }
+}
+ros_epirus_status = {
+    type = country
+    text = { trigger = { ros_epirus_controlled = no has_variable = ros_epirus_settled } localization_key = ros_epirus_lost }
+    text = { trigger = { ros_epirus_controlled = yes has_variable = ros_epirus_delegated } localization_key = ros_epirus_delegated_status }
+    text = { trigger = { ros_epirus_controlled = yes has_variable = ros_epirus_settled } localization_key = ros_epirus_royal_status }
+    text = { trigger = { ros_epirus_controlled = yes } localization_key = ros_epirus_unsettled_status }
+    text = { fallback = yes localization_key = ros_epirus_status_fallback }
+}
+ros_thessaly_status = {
+    type = country
+    text = { trigger = { ros_thessaly_controlled = no has_variable = ros_thessaly_settled } localization_key = ros_thessaly_lost }
+    text = { trigger = { ros_thessaly_controlled = yes has_variable = ros_thessaly_delegated } localization_key = ros_thessaly_delegated_status }
+    text = { trigger = { ros_thessaly_controlled = yes has_variable = ros_thessaly_settled } localization_key = ros_thessaly_royal_status }
+    text = { trigger = { ros_thessaly_controlled = yes } localization_key = ros_thessaly_unsettled_status }
+    text = { fallback = yes localization_key = ros_thessaly_status_fallback }
+}
+ros_code_status = {
+    type = country
+    text = { trigger = { has_policy = law_of_the_pious_emperor } localization_key = ros_code_enacted }
+    text = { trigger = { has_variable = ros_code_considered } localization_key = ros_code_declined }
+    text = { fallback = yes localization_key = ros_code_status_fallback }
+}
+ros_crown_status = {
+    type = country
+    text = { trigger = { country_rank = country_rank:rank_empire } localization_key = ros_crown_achieved }
+    text = { trigger = { has_variable = ros_coronation_considered } localization_key = ros_crown_declined }
+    text = { fallback = yes localization_key = ros_crown_status_fallback }
+}
+ros_heir_status = {
+    type = country
+    text = { trigger = { has_variable = ros_successor_prepared } localization_key = ros_heir_prepared }
+    text = { fallback = yes localization_key = ros_heir_status_fallback }
+}
+ros_compact_status = {
+    type = country
+    text = { trigger = { has_variable = ros_compact } localization_key = ros_compact_signed }
+    text = { fallback = yes localization_key = ros_compact_status_fallback }
+}

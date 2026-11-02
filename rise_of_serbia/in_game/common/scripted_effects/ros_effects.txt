@@ -1,0 +1,45 @@
+ros_refresh_realm = {
+    set_variable = { name = ros_conquests value = 0 }
+    set_variable = { name = ros_delegations value = 0 }
+    set_variable = { name = ros_unsettled value = 0 }
+    if = { limit = { ros_macedonia_controlled = yes }
+        change_variable = { name = ros_conquests add = 1 }
+        if = { limit = { NOT = { has_variable = ros_macedonia_settled } } change_variable = { name = ros_unsettled add = 1 } }
+    }
+    if = { limit = { has_variable = ros_macedonia_delegated } change_variable = { name = ros_delegations add = 1 } }
+    if = { limit = { ros_albania_controlled = yes }
+        change_variable = { name = ros_conquests add = 1 }
+        if = { limit = { NOT = { has_variable = ros_albania_settled } } change_variable = { name = ros_unsettled add = 1 } }
+    }
+    if = { limit = { has_variable = ros_albania_delegated } change_variable = { name = ros_delegations add = 1 } }
+    if = { limit = { ros_epirus_controlled = yes }
+        change_variable = { name = ros_conquests add = 1 }
+        if = { limit = { NOT = { has_variable = ros_epirus_settled } } change_variable = { name = ros_unsettled add = 1 } }
+    }
+    if = { limit = { has_variable = ros_epirus_delegated } change_variable = { name = ros_delegations add = 1 } }
+    if = { limit = { ros_thessaly_controlled = yes }
+        change_variable = { name = ros_conquests add = 1 }
+        if = { limit = { NOT = { has_variable = ros_thessaly_settled } } change_variable = { name = ros_unsettled add = 1 } }
+    }
+    if = { limit = { has_variable = ros_thessaly_delegated } change_variable = { name = ros_delegations add = 1 } }
+    set_variable = { name = ros_strain value = 40 }
+    change_variable = { name = ros_strain add = { value = var:ros_delegations multiply = 8 } }
+    change_variable = { name = ros_strain add = { value = var:ros_unsettled multiply = 8 } }
+    if = { limit = { has_policy = law_of_the_pious_emperor } change_variable = { name = ros_strain subtract = 10 } }
+    if = { limit = { has_variable = ros_successor_prepared } change_variable = { name = ros_strain subtract = 15 } }
+    if = { limit = { has_variable = ros_compact } change_variable = { name = ros_strain subtract = 15 } }
+    if = { limit = { stability < 20 } change_variable = { name = ros_strain add = 10 } }
+    if = { limit = { legitimacy < 60 } change_variable = { name = ros_strain add = 10 } }
+    if = { limit = { stability >= 50 } change_variable = { name = ros_strain subtract = 5 } }
+    if = { limit = { legitimacy >= 80 } change_variable = { name = ros_strain subtract = 5 } }
+    if = { limit = { average_control_in_home_region < 0.5 } change_variable = { name = ros_strain add = 10 } }
+    if = { limit = { at_war = yes } change_variable = { name = ros_strain add = 10 } }
+    set_variable = { name = ros_strain value = { value = var:ros_strain min = 0 max = 100 } }
+}
+
+ros_clear_regional_modifiers = {
+    remove_country_modifier = ros_macedonia_delegation
+    remove_country_modifier = ros_albania_delegation
+    remove_country_modifier = ros_epirus_delegation
+    remove_country_modifier = ros_thessaly_delegation
+}

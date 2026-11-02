@@ -1,0 +1,95 @@
+# Country scope unless explicitly marked location scope.
+ros_founder_rules = { character:ser_stefan_dusan = { is_alive = yes is_ruler = yes owner = c:SER } }
+ros_coronation_ready = { at_war = no owns = location:skopje ros_macedonia_controlled = yes NOT = { country_rank = country_rank:rank_empire } }
+ros_code_ready = {
+    at_war = no country_rank = country_rank:rank_empire
+    OR = { ros_founder_rules = yes ruler ?= { adm > 80 } ruler ?= { has_trait = lawgiver } }
+}
+ros_all_held_regions_settled = {
+    OR = { ros_macedonia_controlled = no has_variable = ros_macedonia_settled }
+    OR = { ros_albania_controlled = no has_variable = ros_albania_settled }
+    OR = { ros_epirus_controlled = no has_variable = ros_epirus_settled }
+    OR = { ros_thessaly_controlled = no has_variable = ros_thessaly_settled }
+}
+ros_no_delegations = {
+    NOT = { has_variable = ros_macedonia_delegated }
+    NOT = { has_variable = ros_albania_delegated }
+    NOT = { has_variable = ros_epirus_delegated }
+    NOT = { has_variable = ros_thessaly_delegated }
+}
+
+ros_macedonia_location = { # Location scope
+OR = { province_definition = province_definition:upper_macedonia_province province_definition = province_definition:central_macedonia_province province_definition = province_definition:lower_macedonia_province }
+NOT = { this = location:durres }
+}
+ros_macedonia_controlled = {
+    province_definition:upper_macedonia_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+    province_definition:central_macedonia_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+    province_definition:lower_macedonia_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+}
+
+ros_albania_location = { # Location scope
+OR = { province_definition = province_definition:albania_province }
+NOT = { this = location:durres }
+}
+ros_albania_controlled = {
+    province_definition:albania_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+}
+
+ros_epirus_location = { # Location scope
+OR = { province_definition = province_definition:north_epirus_province province_definition = province_definition:south_epirus_province province_definition = province_definition:aetolia_province }
+NOT = { this = location:durres }
+}
+ros_epirus_controlled = {
+    province_definition:north_epirus_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+    province_definition:south_epirus_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+    province_definition:aetolia_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+}
+
+ros_thessaly_location = { # Location scope
+OR = { province_definition = province_definition:thessaly_province }
+NOT = { this = location:durres }
+}
+ros_thessaly_controlled = {
+    province_definition:thessaly_province = {
+        NOT = { any_ownable_location_in_province_definition = {
+            NOT = { this = location:durres }
+            NOT = { c:SER = { owns_or_non_sovereign_subject_owns = prev } }
+        } }
+    }
+}

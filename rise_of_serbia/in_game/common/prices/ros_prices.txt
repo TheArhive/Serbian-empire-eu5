@@ -1,0 +1,3 @@
+ros_free = { gold = 0 }
+ros_assembly = { scaled_gold = 2 government_power = 5 }
+ros_reform = { government_power = 10 }

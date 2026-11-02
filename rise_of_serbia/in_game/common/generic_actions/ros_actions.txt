@@ -1,0 +1,359 @@
+ros_claim_programme = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { ros_founder_rules = yes at_war = no NOT = { has_variable = ros_claims_offered } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_claim_programme_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_rise = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { trigger_event_non_silently = flavor_ser.30 set_variable = ros_claims_offered } }
+    ai_will_do = { add = 10 }
+}
+ros_proclaim_empire = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { ros_coronation_ready = yes NOT = { has_variable = ros_coronation_considered } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_proclaim_empire_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_rise = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { trigger_event_non_silently = flavor_ser.31 set_variable = ros_coronation_considered } }
+    ai_will_do = { add = 10 }
+}
+ros_promulgate_code = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { ros_code_ready = yes NOT = { has_variable = ros_code_considered } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_promulgate_code_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { OR = { situation:ros_rise = this situation:ros_inheritance = this } situation_is_active = yes }
+    }
+    effect = { scope:actor = { trigger_event_non_silently = flavor_ser.50 set_variable = ros_code_considered } }
+    ai_will_do = { add = 10 }
+}
+ros_prepare_successor = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no has_heir = yes NOT = { has_variable = ros_successor_prepared } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_assembly
+    cooldown = { type = ros_prepare_successor_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_rise = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { set_variable = { name = ros_prepared_heir value = heir } set_variable = ros_successor_prepared ros_refresh_realm = yes } }
+    ai_will_do = { add = 10 }
+}
+ros_settle_macedonia = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no ros_macedonia_controlled = yes NOT = { has_variable = ros_macedonia_settled } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_settle_macedonia_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { OR = { situation:ros_rise = this situation:ros_inheritance = this } situation_is_active = yes }
+    }
+    effect = { scope:actor = { trigger_event_non_silently = ros.10 } }
+    ai_will_do = { add = 10 }
+}
+ros_revoke_macedonia = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no is_during_bankruptcy = no ros_macedonia_controlled = yes has_variable = ros_macedonia_delegated } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_reform
+    cooldown = { type = ros_revoke_macedonia_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_inheritance = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { change_gold_effect = { scale = -6 }
+           add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.1 }
+           add_stability = -5
+           remove_variable = ros_macedonia_delegated
+           remove_country_modifier = ros_macedonia_delegation
+           ros_refresh_realm = yes } }
+    ai_will_do = { add = 10 }
+}
+ros_settle_albania = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no ros_albania_controlled = yes NOT = { has_variable = ros_albania_settled } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_settle_albania_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { OR = { situation:ros_rise = this situation:ros_inheritance = this } situation_is_active = yes }
+    }
+    effect = { scope:actor = { trigger_event_non_silently = ros.11 } }
+    ai_will_do = { add = 10 }
+}
+ros_revoke_albania = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no is_during_bankruptcy = no ros_albania_controlled = yes has_variable = ros_albania_delegated } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_reform
+    cooldown = { type = ros_revoke_albania_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_inheritance = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { change_gold_effect = { scale = -6 }
+           add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.1 }
+           add_stability = -5
+           remove_variable = ros_albania_delegated
+           remove_country_modifier = ros_albania_delegation
+           ros_refresh_realm = yes } }
+    ai_will_do = { add = 10 }
+}
+ros_settle_epirus = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no ros_epirus_controlled = yes NOT = { has_variable = ros_epirus_settled } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_settle_epirus_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { OR = { situation:ros_rise = this situation:ros_inheritance = this } situation_is_active = yes }
+    }
+    effect = { scope:actor = { trigger_event_non_silently = ros.12 } }
+    ai_will_do = { add = 10 }
+}
+ros_revoke_epirus = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no is_during_bankruptcy = no ros_epirus_controlled = yes has_variable = ros_epirus_delegated } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_reform
+    cooldown = { type = ros_revoke_epirus_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_inheritance = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { change_gold_effect = { scale = -6 }
+           add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.1 }
+           add_stability = -5
+           remove_variable = ros_epirus_delegated
+           remove_country_modifier = ros_epirus_delegation
+           ros_refresh_realm = yes } }
+    ai_will_do = { add = 10 }
+}
+ros_settle_thessaly = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no ros_thessaly_controlled = yes NOT = { has_variable = ros_thessaly_settled } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_settle_thessaly_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { OR = { situation:ros_rise = this situation:ros_inheritance = this } situation_is_active = yes }
+    }
+    effect = { scope:actor = { trigger_event_non_silently = ros.13 } }
+    ai_will_do = { add = 10 }
+}
+ros_revoke_thessaly = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no is_during_bankruptcy = no ros_thessaly_controlled = yes has_variable = ros_thessaly_delegated } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_reform
+    cooldown = { type = ros_revoke_thessaly_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_inheritance = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { change_gold_effect = { scale = -6 }
+           add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.1 }
+           add_stability = -5
+           remove_variable = ros_thessaly_delegated
+           remove_country_modifier = ros_thessaly_delegation
+           ros_refresh_realm = yes } }
+    ai_will_do = { add = 10 }
+}
+ros_negotiate_compact = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { at_war = no var:ros_inheritance_months >= 12 NOT = { has_variable = ros_compact } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_assembly
+    cooldown = { type = ros_negotiate_compact_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_inheritance = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { set_variable = ros_compact
+       add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.1 }
+       add_country_modifier = { modifier = ros_compact_concessions years = -1 mode = replace }
+       ros_refresh_realm = yes } }
+    ai_will_do = { add = 10 }
+}
+ros_confirm_crown = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { country_rank = country_rank:rank_empire has_policy = law_of_the_pious_emperor
+       at_war = no ros_no_delegations = yes ros_all_held_regions_settled = yes
+       NOT = { has_variable = ros_compact }
+       var:ros_stable_months >= 36 var:ros_strain <= 25
+       NOT = { has_variable = ros_compact_victory } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_confirm_crown_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_inheritance = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { set_variable = ros_central_victory } }
+    ai_will_do = { add = 100 }
+}
+ros_confirm_compact = {
+    type = situation
+    icon = examine_our_fortifications
+    show_message = no
+    potential = { scope:actor = { tag = SER has_variable = ros_managed  } }
+    allow = { scope:actor = { country_rank = country_rank:rank_empire at_war = no has_variable = ros_compact
+       ros_all_held_regions_settled = yes var:ros_stable_months >= 36 var:ros_strain <= 40
+       NOT = { has_variable = ros_central_victory } } }
+    automation_tick = never
+    automation_tick_frequency = 12
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    price = price:ros_free
+    cooldown = { type = ros_confirm_compact_cooldown months = 1 }
+    select_trigger = {
+        looking_for_a = situation
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { situation:ros_inheritance = this situation_is_active = yes }
+    }
+    effect = { scope:actor = { set_variable = ros_compact_victory } }
+    ai_will_do = { add = 100 }
+}

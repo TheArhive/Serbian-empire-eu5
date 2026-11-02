@@ -1,0 +1,46 @@
+ros_rise = {
+    monthly_spawn_chance = monthly_spawn_chance_unique
+    content_trigger = { tag = SER }
+    can_start = {
+        current_year < 1340
+        country_exists = c:SER
+        c:SER = { ros_founder_rules = yes NOT = { has_variable = ros_managed } }
+    }
+    visible = { tag = SER }
+    outcome = {
+        name = ros_rise_handover
+        desc = ros_rise_handover_desc
+        trigger = { c:SER ?= { ros_founder_rules = no } }
+        immediate = { c:SER ?= { set_variable = ros_inheritance_pending } }
+    }
+    outcome = {
+        name = ros_country_lost
+        trigger = { NOT = { country_exists = c:SER } }
+    }
+    on_start = {
+        set_variable = { name = ros_country value = c:SER }
+        c:SER = {
+            set_variable = ros_managed
+            ros_refresh_realm = yes
+            trigger_event_non_silently = ros.1
+        }
+    }
+    on_monthly = {
+        c:SER ?= {
+            if = {
+                limit = { has_variable = ros_prepared_heir NOT = { heir ?= var:ros_prepared_heir } ros_founder_rules = yes }
+                remove_variable = ros_prepared_heir
+                remove_variable = ros_successor_prepared
+            }
+            ros_refresh_realm = yes
+        }
+    }
+
+    map_color = {
+        if = { limit = { owner ?= c:SER } value = define:NMapColors|MAP_COLOR_HIGH }
+        else_if = { limit = { OR = { ros_macedonia_location = yes ros_albania_location = yes ros_epirus_location = yes ros_thessaly_location = yes } } value = define:NMapColors|MAP_COLOR_MID }
+        else = { value = define:NMapColors|DEFAULT_COLOR }
+    }
+    legend_key = { desc = ros_map_held color = define:NMapColors|MAP_COLOR_HIGH }
+    legend_key = { desc = ros_map_objectives color = define:NMapColors|MAP_COLOR_MID }
+}

@@ -1,0 +1,138 @@
+situation_panel = {
+    blockoverride "situation_panel_image" {
+        using = one_country_header_template
+        blockoverride "CountryContext" {
+            datacontext = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('ros_country').GetCountry]"
+        }
+        blockoverride "character_religion_visibility" { visible = no }
+    }
+    blockoverride "situation_subheader_content" {}
+    blockoverride "situation_panel_main_content" {
+        vbox = {
+            layoutpolicy_horizontal = expanding
+            spacing = 8
+            datacontext = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('ros_country').GetCountry]"
+            text_multi = { layoutpolicy_horizontal = expanding max_width = 470 autoresize = yes text = ros_rise_intro }
+            situation_card_expandable = {
+        blockoverride "header_button_onclick" { onclick = "[LateralView.Vars.Toggle('ros_realm')]" }
+        blockoverride "header_text" { text = "ros_realm_heading" }
+        blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+        blockoverride "bottom_content_onclick" { visible = "[Not(LateralView.Vars.Exists('ros_realm'))]" }
+        blockoverride "icon_replace_visible_yes" { visible = "[Not(LateralView.Vars.Exists('ros_realm'))]" }
+        blockoverride "icon_replace_visible_not" { visible = "[LateralView.Vars.Exists('ros_realm')]" }
+        blockoverride "bottom_content" {
+            text_multi = {
+                margin = { 12 8 }
+                layoutpolicy_horizontal = expanding
+                max_width = 460
+                autoresize = yes
+                text = "ros_realm_summary"
+            }
+        }
+    }
+situation_card_expandable = {
+        blockoverride "header_button_onclick" { onclick = "[LateralView.Vars.Toggle('ros_foundations')]" }
+        blockoverride "header_text" { text = "ros_foundations_heading" }
+        blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+        blockoverride "bottom_content_onclick" { visible = "[Not(LateralView.Vars.Exists('ros_foundations'))]" }
+        blockoverride "icon_replace_visible_yes" { visible = "[Not(LateralView.Vars.Exists('ros_foundations'))]" }
+        blockoverride "icon_replace_visible_not" { visible = "[LateralView.Vars.Exists('ros_foundations')]" }
+        blockoverride "bottom_content" {
+            text_multi = {
+                margin = { 12 8 }
+                layoutpolicy_horizontal = expanding
+                max_width = 460
+                autoresize = yes
+                text = "ros_foundations_summary"
+            }
+        }
+    }
+situation_card_expandable = {
+        blockoverride "header_button_onclick" { onclick = "[LateralView.Vars.Toggle('ros_card_macedonia')]" }
+        blockoverride "header_text" { text = "ros_macedonia_heading" }
+        blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+        blockoverride "bottom_content_onclick" { visible = "[Not(LateralView.Vars.Exists('ros_card_macedonia'))]" }
+        blockoverride "icon_replace_visible_yes" { visible = "[Not(LateralView.Vars.Exists('ros_card_macedonia'))]" }
+        blockoverride "icon_replace_visible_not" { visible = "[LateralView.Vars.Exists('ros_card_macedonia')]" }
+        blockoverride "bottom_content" {
+            text_multi = {
+                margin = { 12 8 }
+                layoutpolicy_horizontal = expanding
+                max_width = 460
+                autoresize = yes
+                text = "[Country.Custom('ros_macedonia_status')]"
+            }
+        }
+    }
+situation_card_expandable = {
+        blockoverride "header_button_onclick" { onclick = "[LateralView.Vars.Toggle('ros_card_albania')]" }
+        blockoverride "header_text" { text = "ros_albania_heading" }
+        blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+        blockoverride "bottom_content_onclick" { visible = "[Not(LateralView.Vars.Exists('ros_card_albania'))]" }
+        blockoverride "icon_replace_visible_yes" { visible = "[Not(LateralView.Vars.Exists('ros_card_albania'))]" }
+        blockoverride "icon_replace_visible_not" { visible = "[LateralView.Vars.Exists('ros_card_albania')]" }
+        blockoverride "bottom_content" {
+            text_multi = {
+                margin = { 12 8 }
+                layoutpolicy_horizontal = expanding
+                max_width = 460
+                autoresize = yes
+                text = "[Country.Custom('ros_albania_status')]"
+            }
+        }
+    }
+situation_card_expandable = {
+        blockoverride "header_button_onclick" { onclick = "[LateralView.Vars.Toggle('ros_card_epirus')]" }
+        blockoverride "header_text" { text = "ros_epirus_heading" }
+        blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+        blockoverride "bottom_content_onclick" { visible = "[Not(LateralView.Vars.Exists('ros_card_epirus'))]" }
+        blockoverride "icon_replace_visible_yes" { visible = "[Not(LateralView.Vars.Exists('ros_card_epirus'))]" }
+        blockoverride "icon_replace_visible_not" { visible = "[LateralView.Vars.Exists('ros_card_epirus')]" }
+        blockoverride "bottom_content" {
+            text_multi = {
+                margin = { 12 8 }
+                layoutpolicy_horizontal = expanding
+                max_width = 460
+                autoresize = yes
+                text = "[Country.Custom('ros_epirus_status')]"
+            }
+        }
+    }
+situation_card_expandable = {
+        blockoverride "header_button_onclick" { onclick = "[LateralView.Vars.Toggle('ros_card_thessaly')]" }
+        blockoverride "header_text" { text = "ros_thessaly_heading" }
+        blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+        blockoverride "bottom_content_onclick" { visible = "[Not(LateralView.Vars.Exists('ros_card_thessaly'))]" }
+        blockoverride "icon_replace_visible_yes" { visible = "[Not(LateralView.Vars.Exists('ros_card_thessaly'))]" }
+        blockoverride "icon_replace_visible_not" { visible = "[LateralView.Vars.Exists('ros_card_thessaly')]" }
+        blockoverride "bottom_content" {
+            text_multi = {
+                margin = { 12 8 }
+                layoutpolicy_horizontal = expanding
+                max_width = 460
+                autoresize = yes
+                text = "[Country.Custom('ros_thessaly_status')]"
+            }
+        }
+    }
+situation_card_expandable = {
+        blockoverride "header_button_onclick" { onclick = "[LateralView.Vars.Toggle('ros_ledger')]" }
+        blockoverride "header_text" { text = "ros_inheritance_heading" }
+        blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+        blockoverride "bottom_content_onclick" { visible = "[Not(LateralView.Vars.Exists('ros_ledger'))]" }
+        blockoverride "icon_replace_visible_yes" { visible = "[Not(LateralView.Vars.Exists('ros_ledger'))]" }
+        blockoverride "icon_replace_visible_not" { visible = "[LateralView.Vars.Exists('ros_ledger')]" }
+        blockoverride "bottom_content" {
+            text_multi = {
+                margin = { 12 8 }
+                layoutpolicy_horizontal = expanding
+                max_width = 460
+                autoresize = yes
+                text = "ros_inheritance_summary"
+            }
+        }
+    }
+
+        }
+    }
+}

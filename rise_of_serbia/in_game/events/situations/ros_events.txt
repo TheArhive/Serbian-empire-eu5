@@ -1,0 +1,141 @@
+﻿namespace = ros
+ros.1 = {
+    type = country_event title = ros.1.title desc = ros.1.desc
+    image = "gfx/interface/illustrations/institutions/legalism.dds"
+    option = { name = ros.1.a }
+}
+ros.2 = {
+    type = country_event title = ros.2.title desc = ros.2.desc
+    image = "gfx/interface/illustrations/disaster/coup_attempt.dds"
+    option = {
+        name = ros.2.a
+        if = { limit = { NOT = { has_variable = ros_successor_prepared } } add_legitimacy = -10 add_stability = -10 }
+    }
+}
+ros.10 = {
+    type = country_event title = ros.10.title desc = ros.10.desc
+    image = "gfx/interface/illustrations/institutions/legalism.dds"
+    option = {
+        name = ros_settle_royal
+        trigger = { is_during_bankruptcy = no }
+        ai_chance = { factor = 50 }
+        change_gold_effect = { scale = -6 }
+        add_stability = -5
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.05 }
+        set_variable = ros_macedonia_settled
+        custom_tooltip = ros_royal_settlement_tt
+        ros_refresh_realm = yes
+    }
+    option = {
+        name = ros_settle_delegated
+        ai_chance = { factor = 50 }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+        set_variable = ros_macedonia_settled
+        set_variable = ros_macedonia_delegated
+        add_country_modifier = { modifier = ros_macedonia_delegation years = -1 mode = replace }
+        custom_tooltip = ros_delegated_settlement_tt
+        ros_refresh_realm = yes
+    }
+}
+ros.11 = {
+    type = country_event title = ros.11.title desc = ros.11.desc
+    image = "gfx/interface/illustrations/institutions/legalism.dds"
+    option = {
+        name = ros_settle_royal
+        trigger = { is_during_bankruptcy = no }
+        ai_chance = { factor = 50 }
+        change_gold_effect = { scale = -6 }
+        add_stability = -5
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.05 }
+        set_variable = ros_albania_settled
+        custom_tooltip = ros_royal_settlement_tt
+        ros_refresh_realm = yes
+    }
+    option = {
+        name = ros_settle_delegated
+        ai_chance = { factor = 50 }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+        set_variable = ros_albania_settled
+        set_variable = ros_albania_delegated
+        add_country_modifier = { modifier = ros_albania_delegation years = -1 mode = replace }
+        custom_tooltip = ros_delegated_settlement_tt
+        ros_refresh_realm = yes
+    }
+}
+ros.12 = {
+    type = country_event title = ros.12.title desc = ros.12.desc
+    image = "gfx/interface/illustrations/institutions/legalism.dds"
+    option = {
+        name = ros_settle_royal
+        trigger = { is_during_bankruptcy = no }
+        ai_chance = { factor = 50 }
+        change_gold_effect = { scale = -6 }
+        add_stability = -5
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.05 }
+        set_variable = ros_epirus_settled
+        custom_tooltip = ros_royal_settlement_tt
+        ros_refresh_realm = yes
+    }
+    option = {
+        name = ros_settle_delegated
+        ai_chance = { factor = 50 }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+        set_variable = ros_epirus_settled
+        set_variable = ros_epirus_delegated
+        add_country_modifier = { modifier = ros_epirus_delegation years = -1 mode = replace }
+        custom_tooltip = ros_delegated_settlement_tt
+        ros_refresh_realm = yes
+    }
+}
+ros.13 = {
+    type = country_event title = ros.13.title desc = ros.13.desc
+    image = "gfx/interface/illustrations/institutions/legalism.dds"
+    option = {
+        name = ros_settle_royal
+        trigger = { is_during_bankruptcy = no }
+        ai_chance = { factor = 50 }
+        change_gold_effect = { scale = -6 }
+        add_stability = -5
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.05 }
+        set_variable = ros_thessaly_settled
+        custom_tooltip = ros_royal_settlement_tt
+        ros_refresh_realm = yes
+    }
+    option = {
+        name = ros_settle_delegated
+        ai_chance = { factor = 50 }
+        add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+        set_variable = ros_thessaly_settled
+        set_variable = ros_thessaly_delegated
+        add_country_modifier = { modifier = ros_thessaly_delegation years = -1 mode = replace }
+        custom_tooltip = ros_delegated_settlement_tt
+        ros_refresh_realm = yes
+    }
+}
+ros.40 = {
+    type = country_event title = ros.40.title desc = ros.40.desc
+    image = "gfx/interface/illustrations/institutions/legalism.dds"
+    option = {
+        name = ros.40.a
+        add_legitimacy = 10 add_prestige = 10
+        add_country_modifier = { modifier = ros_enduring_crown years = 25 mode = replace }
+    }
+}
+ros.41 = {
+    type = country_event title = ros.41.title desc = ros.41.desc
+    image = "gfx/interface/illustrations/institutions/legalism.dds"
+    option = {
+        name = ros.41.a
+        add_legitimacy = 10 add_stability = 10
+        add_country_modifier = { modifier = ros_enduring_compact years = 25 mode = replace }
+    }
+}
+ros.42 = {
+    type = country_event title = ros.42.title desc = ros.42.desc
+    image = "gfx/interface/illustrations/disaster/coup_attempt.dds"
+    option = {
+        name = ros.42.a
+        add_legitimacy = -10
+        add_country_modifier = { modifier = ros_unfinished_inheritance years = 15 mode = replace }
+    }
+}
