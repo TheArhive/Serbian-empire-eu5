@@ -1,11 +1,11 @@
 from pathlib import Path
 import json
 import re
+import os
 import hashlib
 
-BASE = next((p for p in Path(__file__).resolve().parents if (p/'eu5_reference').is_dir()), Path(__file__).resolve().parents[1])
-REF = BASE / 'eu5_reference'
-MOD = BASE / 'deliverables/rise_of_serbia'
+MOD = Path(__file__).resolve().parents[1]
+REF = Path(os.environ.get('EU5_REFERENCE_DIR', str(MOD / 'eu5_reference'))).resolve()
 LOC = {}
 
 def write(path, text, bom=False):

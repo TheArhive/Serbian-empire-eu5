@@ -1,12 +1,12 @@
 """Static validation and scenario evaluation. This is not the EU5 engine."""
 from pathlib import Path
 import re
+import os
 import json
 import itertools
 
-BASE = next((p for p in Path(__file__).resolve().parents if (p/'eu5_reference').is_dir()), Path(__file__).resolve().parents[1])
-MOD = BASE / 'deliverables/rise_of_serbia'
-REF = BASE / 'eu5_reference'
+MOD = Path(__file__).resolve().parents[1]
+REF = Path(os.environ.get('EU5_REFERENCE_DIR', str(MOD / 'eu5_reference'))).resolve()
 TOKEN = re.compile(r'\s+|\#[^\n]*|"(?:\\.|[^"\\])*"|\?=|!=|<=|>=|[{}=<>]|[^\s{}=<>!?#"]+')
 
 def parse(text):
@@ -50,6 +50,8 @@ def walk(nodes):
 
 asts = {}
 for path in MOD.rglob('*'):
+    if path.is_relative_to(REF):
+        continue
     if path.suffix in ['.txt','.gui']:
         asts[path.relative_to(MOD).as_posix()] = parse(path.read_text(encoding='utf-8-sig'))
 
